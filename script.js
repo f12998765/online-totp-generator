@@ -113,7 +113,7 @@ var script = {
       if (!text) return;
       text = text.trim();
       if (/^[2-7]{6}$/.test(text)) return;
-      if (/^[A-Z2-7]+$/.test(text)) this.addEntry({ secret: text });
+      if (/^[A-Z2-7]+$/.test(text)) this.addEntry({ secret: text }) ;
       try {
         const url = new URL(text);
         const entry = Object.fromEntries(url.searchParams);
@@ -121,6 +121,7 @@ var script = {
         this.addEntry(entry);
       } catch (e) {
         console.error(e);
+        this.addEntry({ secret: text });
       }
     },
     copy(text) {
